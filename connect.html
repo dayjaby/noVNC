@@ -51,7 +51,7 @@
     <link rel="stylesheet" href="app/styles/base.css">
 
     <script src="app/error-handler.js"></script>
-    <script type="module" crossorigin="anonymous" src="app/ui.js"></script>
+    <!--script type="module" crossorigin="anonymous" src="app/ui.js"></script-->
 </head>
 
 <body>
@@ -168,13 +168,13 @@
                     </li>
                     <li><hr></li>
                     <li>
-                        <label><input id="noVNC_setting_view_clip" type="checkbox" checked> Clip to Window</label>
+                        <label><input id="noVNC_setting_view_clip" type="checkbox"> Clip to Window</label>
                     </li>
                     <li>
                         <label for="noVNC_setting_resize">Scaling Mode:</label>
                         <select id="noVNC_setting_resize" name="vncResize">
                             <option value="off">None</option>
-                            <option value="scale" selected>Local Scaling</option>
+                            <option value="scale">Local Scaling</option>
                             <option value="remote">Remote Resizing</option>
                         </select>
                     </li>
@@ -263,13 +263,16 @@
 
     <!-- Connect button -->
     <div class="noVNC_center">
-        <div id="noVNC_connect_dlg">
+        <div id="noVNC_server_dlg">
             <div class="noVNC_logo" translate="no">
                 <img alt="" src="app/images/favicon.png">
 	    </div>
-            <div id="noVNC_connect_button"><div>
-                <img alt="" src="app/images/connect.svg"> Connect
-            </div></div>
+            <div id="noVNC_server"><a target="_blank" rel="noopener noreferrer" href="./to/server1">
+                <img alt="" src="app/images/connect.svg"> Server 1
+            </a></div>
+            <div id="noVNC_server"><a target="_blank" rel="noopener noreferrer" href="./to/kundenserver">
+                <img alt="" src="app/images/connect.svg"> Kundenserver
+            </a></div>
         </div>
     </div>
 
@@ -291,29 +294,5 @@
         </ul>
     </form></div>
     </div>
-
-    <!-- Transition Screens -->
-    <div id="noVNC_transition">
-        <div id="noVNC_transition_text"></div>
-        <div>
-        <input type="button" id="noVNC_cancel_reconnect_button" value="Cancel" class="noVNC_submit">
-        </div>
-        <div class="noVNC_spinner"></div>
-    </div>
-
-    <!-- This is where the RFB elements will attach -->
-    <div id="noVNC_container">
-        <!-- Note that Google Chrome on Android doesn't respect any of these,
-             html attributes which attempt to disable text suggestions on the
-             on-screen keyboard. Let's hope Chrome implements the ime-mode
-             style for example -->
-        <textarea id="noVNC_keyboardinput" autocapitalize="off"
-            autocomplete="off" spellcheck="false" tabindex="-1"></textarea>
-    </div>
-
-    <audio id="noVNC_bell">
-        <source src="app/sounds/bell.oga" type="audio/ogg">
-        <source src="app/sounds/bell.mp3" type="audio/mpeg">
-    </audio>
  </body>
 </html>

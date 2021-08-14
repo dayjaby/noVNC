@@ -1,0 +1,59 @@
++ which netstat
++ grep -qs ':6800 .*LISTEN'
++ netstat -ltn
++ trap cleanup TERM QUIT INT EXIT
++ '[' -n '' ']'
+++ pwd
++ '[' -e /home/david/Development/flask/vnc/vnc.html ']'
+++ pwd
++ WEB=/home/david/Development/flask/vnc
++ '[' -n '' ']'
+++ pwd
++ '[' -e /home/david/Development/flask/vnc/self.pem ']'
++ '[' -e /usr/share/novnc/utils/../self.pem ']'
++ '[' -e /usr/share/novnc/utils/self.pem ']'
++ echo 'Warning: could not find self.pem'
+Warning: could not find self.pem
++ [[ -e /usr/share/novnc/utils/websockify ]]
+++ which websockify
++ WEBSOCKIFY=/usr/local/bin/websockify
++ [[ 0 -ne 0 ]]
++ echo 'Using installed websockify at /usr/local/bin/websockify'
+Using installed websockify at /usr/local/bin/websockify
++ echo 'Starting webserver and WebSockets proxy on port 6800'
+Starting webserver and WebSockets proxy on port 6800
++ proxy_pid=590799
++ sleep 1
++ /usr/local/bin/websockify --web /home/david/Development/flask/vnc 6800 192.168.106.153:5900
+WebSocket server settings:
+  - Listen on :6800
+  - Web server. Web root: /home/david/Development/flask/vnc
+  - No SSL/TLS support (no cert file)
+  - proxying from :6800 to 192.168.106.153:5900
++ ps -p 590799
++ echo -e '\n\nNavigate to this URL:\n'
+
+
+Navigate to this URL:
+
++ '[' x == x ']'
+++ hostname
+++ hostname
++ echo -e '    http://djwebserver:6800/vnc.html?host=djwebserver&port=6800\n'
+    http://djwebserver:6800/vnc.html?host=djwebserver&port=6800
+
++ echo -e 'Press Ctrl-C to exit\n\n'
+Press Ctrl-C to exit
+
+
++ wait 590799
+++ cleanup
+++ trap - TERM QUIT INT EXIT
+++ trap true CHLD
+++ echo
+
+++ '[' -n 590799 ']'
+++ echo 'Terminating WebSockets proxy (590799)'
+Terminating WebSockets proxy (590799)
+++ kill 590799
+In exit

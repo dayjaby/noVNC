@@ -13,7 +13,7 @@
 export class Localizer {
     constructor() {
         // Currently configured language
-        this.language = 'en';
+        this.language = 'de';
 
         // Current dictionary of translations
         this.dictionary = undefined;
@@ -21,7 +21,7 @@ export class Localizer {
 
     // Configure suitable language based on user preferences
     setup(supportedLanguages) {
-        this.language = 'en'; // Default: US English
+        this.language = 'de'; // Default: US English
 
         /*
          * Navigator.languages only available in Chrome (32+) and FireFox (32+)

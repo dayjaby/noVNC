@@ -112,7 +112,7 @@ const UI = {
 
         document.documentElement.classList.remove("noVNC_loading");
 
-        let autoconnect = WebUtil.getConfigVar('autoconnect', false);
+        let autoconnect = WebUtil.getConfigVar('autoconnect', true);
         if (autoconnect === 'true' || autoconnect == '1') {
             autoconnect = true;
             UI.connect();
@@ -160,19 +160,20 @@ const UI = {
                 port = 80;
             }
         }
+	let path = DEFAULT_PATH;
 
         /* Populate the controls if defaults are provided in the URL */
         UI.initSetting('host', window.location.hostname);
         UI.initSetting('port', port);
         UI.initSetting('encrypt', (window.location.protocol === "https:"));
-        UI.initSetting('view_clip', false);
-        UI.initSetting('resize', 'off');
+        UI.initSetting('view_clip', true);
+        UI.initSetting('resize', 'scale');
         UI.initSetting('quality', 6);
         UI.initSetting('compression', 2);
         UI.initSetting('shared', true);
         UI.initSetting('view_only', false);
         UI.initSetting('show_dot', false);
-        UI.initSetting('path', 'websockify');
+        UI.initSetting('path', path);
         UI.initSetting('repeaterID', '');
         UI.initSetting('reconnect', false);
         UI.initSetting('reconnect_delay', 5000);
@@ -992,9 +993,10 @@ const UI = {
         const host = UI.getSetting('host');
         const port = UI.getSetting('port');
         const path = UI.getSetting('path');
+	console.log("Connecting to ", host, port, path);
 
         if (typeof password === 'undefined') {
-            password = WebUtil.getConfigVar('password');
+            password = DEFAULT_PASSWORD;
             UI.reconnectPassword = password;
         }
 
@@ -1194,7 +1196,8 @@ const UI = {
         // Clear the input after reading the password
         inputElemPassword.value = "";
 
-        UI.rfb.sendCredentials({ username: username, password: password });
+        // UI.rfb.sendCredentials({ username: username, password: password });
+        UI.rfb.sendCredentials();
         UI.reconnectPassword = password;
         document.getElementById('noVNC_credentials_dlg')
             .classList.remove('noVNC_open');
